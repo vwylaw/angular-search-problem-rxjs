@@ -4,6 +4,7 @@ import {
   debounceTime,
   distinctUntilChanged,
   Observable,
+  of,
   switchMap,
 } from 'rxjs';
 import { Photo } from './model/Photo';
@@ -23,7 +24,7 @@ export class AppComponent {
     this.photos$ = this.search.valueChanges.pipe(
       debounceTime(200),
       distinctUntilChanged(),
-      switchMap((input) => photoService.search(input))
+      switchMap((input) => input === ''? of([]): photoService.search(input))      
     );
   }
 }
