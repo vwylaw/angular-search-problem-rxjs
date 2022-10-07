@@ -1,0 +1,10 @@
+<div>
+  <label> Image search </label>
+  <input [formControl]="search" />
+
+  <hr />
+
+  <span *ngFor="let photo of photos$ | async">
+    <img [src]="photo.thumbnailUrl" />
+  </span>
+</div>
