@@ -13,7 +13,7 @@ export class MovieService {
     return this.httpCllient
       .get<MovieSearchResponse>(`https://www.omdbapi.com?apikey=c887bb44&s=${input}`)
       .pipe(
-        tap((val) => console.log('Search executed: ' + input))      
+        tap(() => console.log('Search executed: ' + input))      
       );
   }
 }
