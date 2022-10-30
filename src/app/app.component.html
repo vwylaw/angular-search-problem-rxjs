@@ -1,10 +1,22 @@
 <div>
-  <label> Image search </label>
-  <input [formControl]="search" />
-
+  <h2>
+    Movies search
+    <!-- change to use angular reactive form -->
+    <input [formControl]="search" />
+    <!-- <input (keyup)="doSearch($any($event.target).value)" />  -->
+  </h2>
   <hr />
 
-  <span *ngFor="let photo of photos$ | async">
-    <img [src]="photo.thumbnailUrl" />
-  </span>
+  <!-- use the async pipe to subscripe to the obervable, 
+    and the 'as' keyword to store the result in a template local variable -->
+  <ng-container *ngIf="results$ | async as results"> 
+
+    <ng-container *ngIf="results.Response === 'True'; else error">
+      <span *ngFor="let movie of results.Search">
+        <img [src]="movie.Poster" [alt]="movie.Title" />
+      </span>
+    </ng-container>
+    <ng-template #error>{{ results.Error }}</ng-template>
+
+  </ng-container>
 </div>
