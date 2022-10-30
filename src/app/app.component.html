@@ -13,7 +13,7 @@
 
     <ng-container *ngIf="results.Response === 'True'; else error">
       <span *ngFor="let movie of results.Search">
-        <img [src]="movie.Poster" [alt]="movie.Title" />
+        <img class="poster" [src]="movie.Poster" [alt]="movie.Title" />
       </span>
     </ng-container>
     <ng-template #error>{{ results.Error }}</ng-template>
