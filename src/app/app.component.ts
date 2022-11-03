@@ -39,7 +39,8 @@ export class AppComponent {
 
   // regarding the previous implementation, besides the performance issues
   // where a search is performed on every keyup event. most critically 
-  // it could 
+  // it could result in a race condition where response from an old request
+  // may arrive at a later time affecting the correctness of the application
   //
   // doSearch(input: string): void {
   //   this.movieService
