@@ -11,12 +11,12 @@
     and the 'as' keyword to store the result in a template local variable -->
   <ng-container *ngIf="results$ | async as results"> 
 
-    <ng-container *ngIf="results.Response === 'True'; else error">
+    <ng-container *ngIf="results?.Response === 'True'; else error">
       <span *ngFor="let movie of results.Search">
         <img class="poster" [src]="movie.Poster" [alt]="movie.Title" />
       </span>
     </ng-container>
-    <ng-template #error>{{ results.Error }}</ng-template>
+    <ng-template #error>{{ results?.Error }}</ng-template>
 
   </ng-container>
 </div>
